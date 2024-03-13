@@ -37,6 +37,16 @@ const createComputer = (newComputer) => {
     }
 }
 
+// Update a computer 
+const updateComputer = async (id, updatedComputer) => {
+    try {
+        let response = await axios.put(`${BASE_URL}/computers/${id}`, updatedComputer);
+        return response.data;
+    } catch (error) {
+        console.error('Error trying to update computer data to Strapi: ', error);
+    }
+}
+
 // Delete a computer
 const deleteComputer = async (id) => {
     try {
@@ -47,4 +57,4 @@ const deleteComputer = async (id) => {
     }
 }
 
-module.exports = { getComputers, getComputerById, createComputer, deleteComputer };
+module.exports = { getComputers, getComputerById, createComputer, deleteComputer, updateComputer };

@@ -1,6 +1,12 @@
 const express = require('express');
-const { getComputers, getComputerById, createComputer, deleteComputer }  = require('../services/computerService');
-const { ComputerModel } = require('../models/ComputerModel');
+const { 
+    getComputers, 
+    getComputerById, 
+    createComputer, 
+    deleteComputer 
+}  = require('../services/computerService');
+// const { ComputerModel } = require('../models/ComputerModel');
+const { updateComputer } = require('../services/computerService');
 
 // Get all Computers
 const getComputersController = async (req, res) => {
@@ -57,12 +63,45 @@ const createComputerController = async(req, res) => {
     console.log(req.body);
 }
 
+const updateComputerController = async(req, res) => {
+    const id = parseInt(rew.params.id);
+    const updatedComputerData = req.body;
+    try {
+        let existingComputer = await getComputerById(id);
+
+        if (!existingComputer) {
+            return res.status(404).send('Computer not found');
+        }
+
+        if (existingComputer) {
+            existingComputer = { ...existingComputer, ...updatedComputerData };
+            const updatedComputer = await updateComputer(id, existingComputer);
+
+            res.json(updatedComputer);
+        }
+
+    } catch (error) {
+        console.error('Error updating computer: ', error);
+        res.status(500).send(`Error updating computer:  ${error.message}`);
+    }
+}
+
+// Delete a computer
 const deleteComputerController = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
         await deleteComputer(id);
         res.status(200).send(`Computer with id ${id} was deleted successfully`);
+    } catch (error) {
+        console.error('Error trying to delete computer: ', error);
+        res.status(404).send(`Error trying to delete computer: ${error.message}`);
     }
 }
 
-module.exports = { getComputersController, getComputerByIdController, createComputerController };
+module.exports = { 
+        getComputersController, 
+        getComputerByIdController, 
+        createComputerController, 
+        updateComputerController, 
+        deleteComputerController 
+    };

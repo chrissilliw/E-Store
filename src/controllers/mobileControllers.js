@@ -1,6 +1,11 @@
 const express = require('express');
-const { getMobiles, getMobileById }  = require('../services/mobileService');
+const { 
+    getMobiles, 
+    getMobileById, 
+    createMobile 
+}  = require('../services/mobileService');
 
+//Get all Mobile devices
 const getMobilesController = async (req, res) => {
     try {
         let mobiles = await getMobiles();
@@ -36,4 +41,26 @@ const getMobileByIdController = async (req, res) => {
         }
     }
 
-module.exports = { getMobilesController, getMobileByIdController };
+const createMobileController = async (req, res) => {
+    const newMobile = {
+        data: {
+            attributes: {
+                name: req.body.name,
+                description: req.body.description,
+                processor: req.body.processor,
+                price: req.body.price,
+                manufacturer: req.body.manufacturer
+            }
+        }
+    };
+    const createdMobile = await createMobile(newMobile);
+
+    res.send(createdMobile);
+    console.log(req.body);
+}
+
+module.exports = { 
+        getMobilesController,
+        getMobileByIdController, 
+        createMobileController, 
+    };

@@ -3,6 +3,7 @@ require('../models/MobileModel')
 
 const BASE_URL = "http://localhost:1337/api";
 
+// Get all Mobile devices
 const getMobiles = async () => {
     try {
         let response = await axios.get(`${BASE_URL}/mobile-devices`);
@@ -14,6 +15,7 @@ const getMobiles = async () => {
     }
 };
 
+// Get a single mobile device
 const getMobileById = async (id) => {
     try {
         let response = await axios.get(`${BASE_URL}/mobile-devices/${id}`);
@@ -25,4 +27,14 @@ const getMobileById = async (id) => {
     }
 }
 
-module.exports = { getMobiles, getMobileById };
+// Create a mobile device
+const createMobile = (newMobile) => {
+    try {
+        let response = axios.HttpStatusCode(`${BASE_URL}/mobile-devices/${id}`, newMobile);
+        return response.data;
+    } catch (error) {
+        console.error('Error sending mobile computer data to Strapi: ', error);
+    }
+}
+
+module.exports = { getMobiles, getMobileById, createMobile };

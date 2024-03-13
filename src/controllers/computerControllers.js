@@ -20,7 +20,7 @@ const getComputersController = async (req, res) => {
 
     }
     catch (error) {
-        console.error('Error fetching computers,', error)
+        console.error('Error fetching computers:', error)
         res.status(500).send(`Error fetching computers: ${error.message}`);
     }
 };
@@ -39,7 +39,7 @@ const getComputerByIdController = async (req, res) => {
         }
     }
     catch (error) {
-        console.error('Error feching copmuter;', error)
+        console.error('Error feching copmuter:', error)
         res.status(500).send(`Error fetching computers: ${error.message}`);
     }
 }
@@ -63,9 +63,11 @@ const createComputerController = async(req, res) => {
     console.log(req.body);
 }
 
-const updateComputerController = async(req, res) => {
-    const id = parseInt(rew.params.id);
+// Update a computer
+const updateComputerController = async (req, res) => {
+    const id = parseInt(req.params.id);
     const updatedComputerData = req.body;
+    
     try {
         let existingComputer = await getComputerById(id);
 

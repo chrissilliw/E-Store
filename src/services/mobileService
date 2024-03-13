@@ -30,11 +30,31 @@ const getMobileById = async (id) => {
 // Create a mobile device
 const createMobile = (newMobile) => {
     try {
-        let response = axios.HttpStatusCode(`${BASE_URL}/mobile-devices/${id}`, newMobile);
+        let response = axios.post(`${BASE_URL}/mobile-devices/${id}`, newMobile);
         return response.data;
     } catch (error) {
-        console.error('Error sending mobile computer data to Strapi: ', error);
+        console.error('Error sending mobile data to Strapi: ', error);
     }
 }
 
-module.exports = { getMobiles, getMobileById, createMobile };
+// Update a mobile device
+const updateMobile = async (id, updateMobile) => {
+    try {
+        let response = await axios.put(`${BASE_URL}/mobile/devices/${id}`, updateMobile);
+        return response.data;
+    } catch (error) {
+        console.error('Error trying to update computer data to Strapi: ', error);
+    }
+}
+
+// Delete a mobile device
+const deleteMobile = async (id) => {
+    try {
+        let response = await axios.delete(`${BASE_URL}/mobile-devices/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error trying to delete mobile data from Strapi: ', error);
+    }
+}
+
+module.exports = { getMobiles, getMobileById, createMobile, updateMobile, deleteMobile };

@@ -1,11 +1,11 @@
 class MobileModel {
-    constructor(productName, description, processor, price, manufacturer, screen_type) {
-        this.productName = productName;
-        this.description = description;
-        this.processor = processor;
-        this.price = price;
-        this.manufacturer = manufacturer;
-        this.screen_type = screen_type;
+    constructor(id, attributes) {
+        this.id = id;
+        this.productName = attributes.productName;
+        this.description = attributes.description;
+        this.processor = attributes.processor;
+        this.price = attributes.price;
+        this.manufacturer = attributes.manufacturer;
     }
 }
 

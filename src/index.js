@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { router, computersRouter, mobilesRouter } = require('./routes');
+const { router, computersRouter, mobilesRouter, televisionsRouter } = require('./routes');
 
 app.set('view engine', 'pug');
 app.set('views', './views');

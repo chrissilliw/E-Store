@@ -3,10 +3,10 @@ const {
     getComputers, 
     getComputerById, 
     createComputer, 
+    updateComputer,
     deleteComputer 
 }  = require('../services/computerService');
-// const { ComputerModel } = require('../models/ComputerModel');
-const { updateComputer } = require('../services/computerService');
+const { ComputerModel } = require('../models/ComputerModel');
 
 // Get all Computers
 const getComputersController = async (req, res) => {
@@ -105,5 +105,5 @@ module.exports = {
         getComputerByIdController, 
         createComputerController, 
         updateComputerController, 
-        deleteComputerController 
+        deleteComputerController,
     };

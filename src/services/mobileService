@@ -1,0 +1,28 @@
+const axios = require('axios');
+require('../models/MobileModel')
+
+const BASE_URL = "http://localhost:1337/api";
+
+const getMobiles = async () => {
+    try {
+        let response = await axios.get(`${BASE_URL}/mobile-devices`);
+        return response.data.data;
+    } 
+    catch (error) {
+        console.error('Error fetching data from Strapi: ', error);
+        res.status(500).send('Internet Server Error');
+    }
+};
+
+const getMobileById = async (id) => {
+    try {
+        let response = await axios.get(`${BASE_URL}/mobile-devices/${id}`);
+        return response.data.data;
+
+    }
+    catch (error) {
+        console.error('Error fetching data from Strapi');
+    }
+}
+
+module.exports = { getMobiles, getMobileById };

@@ -34,7 +34,6 @@ const getComputerByIdController = async (req, res) => {
         if(computer === null) {
             res.status(404).send('No computer found.');
         } else {
-            console.log(computer);
             res.send(computer);
         }
     }
@@ -60,7 +59,6 @@ const createComputerController = async(req, res) => {
     const createdComputer = await createComputer(newComputer);
 
     res.send(createdComputer);
-    console.log(req.body);
 }
 
 // Update a computer

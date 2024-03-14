@@ -1,2 +1,3 @@
 electronics-strapi
 src/node_modules
+src/.env

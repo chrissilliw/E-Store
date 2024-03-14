@@ -13,7 +13,6 @@ const getMobilesController = async (req, res) => {
         if (mobiles.length === 0 ) {
             res.status(404).send('No mobile devices in stock.');
         } else {
-        //res.send(computers);
         res.send(mobiles);
    }
 
@@ -33,7 +32,6 @@ const getMobileByIdController = async (req, res) => {
             if(mobile === null) {
                 res.status(404).send('No mobile found.');
             } else {
-                console.log(mobile);
                 res.send(mobile);
             }
         }
@@ -59,7 +57,6 @@ const createMobileController = async (req, res) => {
     const createdMobile = await createMobile(newMobile);
 
     res.send(createdMobile);
-    console.log(req.body);
 }
 
 const updateMobileController = async (req, res) => {
@@ -89,7 +86,7 @@ const deleteMobileController = async (req, res) => {
         await deleteMobile(id);
         res.status(200).send(`Mobile device with id ${id} was deleted successfully`);
     } catch (error) {
-        console.error('Error trying to delte mobile device: ', error);
+        console.error('Error trying to delete mobile device: ', error);
         res.status(404).send(`Error trying to delete mobile device: ${error.message}`);
     }
 }

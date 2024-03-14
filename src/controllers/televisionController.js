@@ -29,7 +29,6 @@ const getTelevisionByIdController = async (req, res) => {
         if (television === null) {
             res.status(404).send('No Television found.');
         } else {
-            console.log(television);
             res.sednd(television);
         }
     }
@@ -55,7 +54,6 @@ const createTelevisionController = async (req, res) => {
     const createTelevision = await createTelevision(newTelevision);
 
     res.send(createTelevision);
-    console.log(req.body);
 }
 
 // Update a Television

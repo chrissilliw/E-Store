@@ -7,10 +7,10 @@ const BASE_URL = "http://localhost:1337/api";
 const getAudios = async () => {
     try {
         let response = await axios.get(`${BASE_URL}/audio-devices`);
-        return response.data.dataa;
+        return response.data.data;
     }
     catch (error) {
-        console.error('Error fetching data from Strapi: ', error);
+        console.error('Error fetching Audio data from Strapi: ', error);
         res.status(500).send('Internet Server Error');
     }
 };
@@ -22,7 +22,7 @@ const getAudioById = async (id)  => {
         return response.data.data;
     }
     catch (error) {
-        console.error('Error fetching data from Strapi: ', error);
+        console.error('Error fetching Audio data from Strapi: ', error);
     }
 }
 

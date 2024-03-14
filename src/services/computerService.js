@@ -10,7 +10,7 @@ const getComputers = async () => {
         return response.data.data;
     } 
     catch (error) {
-        console.error('Error fetching data from Strapi: ', error);
+        console.error('Error fetching Computer data from Strapi: ', error);
         res.status(500).send('Internet Server Error');
     }
 };
@@ -23,7 +23,7 @@ const getComputerById = async (id) => {
 
     }
     catch (error) {
-        console.error('Error fetching data from Strapi: ', error);
+        console.error('Error fetching Computer data from Strapi: ', error);
     }
 }
 
